@@ -35,4 +35,9 @@ public class TestDataBuild {
 	{
 		return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";
 	}
+
+	public String getPlacePayload(String placeId)
+	{
+		return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";
+	}
 }

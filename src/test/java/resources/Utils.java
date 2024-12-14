@@ -28,7 +28,7 @@ public class Utils {
 		 req=new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")).addQueryParam("key", "qaclick123")
 				 .addFilter(RequestLoggingFilter.logRequestTo(log))
 				 .addFilter(ResponseLoggingFilter.logResponseTo(log))
-		.setContentType(ContentType.JSON).build();
+		.setContentType(ContentType.JSON).build().log().all();
 		 return req;
 		}
 		return req;
