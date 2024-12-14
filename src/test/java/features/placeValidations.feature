@@ -9,7 +9,7 @@ Scenario Outline: Verify if Place is being Succesfully added using AddPlaceAPI
 	And verify place_Id created maps to "<name>" using "getPlaceAPI"
 	
 Examples:
-	|name 	 | language |address		   |
+	|name 	 | language |address |
 	| Saurabh |  Kannada | WhiteField Bengaluru |
 	| Saurabh | Spanish  | Barcelona |
 

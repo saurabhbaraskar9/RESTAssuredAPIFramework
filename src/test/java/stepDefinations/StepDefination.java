@@ -76,7 +76,6 @@ public void user_calls_with_http_request(String resource, String method) {
 	@Then("verify place_Id created maps to {string} using {string}")
 	public void verify_place_Id_created_maps_to_using(String expectedName, String resource) throws IOException {
 	
-	   // requestSpec
 	     place_id=getJsonPath(response,"place_id");
 		 res=given().spec(requestSpecification()).queryParam("place_id",place_id);
 		 user_calls_with_http_request(resource,"GET");
@@ -89,8 +88,6 @@ public void user_calls_with_http_request(String resource, String method) {
 
 @Given("DeletePlace Payload")
 public void deleteplace_Payload() throws IOException {
-    // Write code here that turns the phrase above into concrete actions
-   
 	res =given().spec(requestSpecification()).body(data.deletePlacePayload(place_id));
 }
 
