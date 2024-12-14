@@ -26,6 +26,17 @@ Feature: Validating Place API's
       | 285205df81f7a9179e878f35b86cc5ed |
       | ed411b09b70ddb46414e927b879d597e |
 
+  @UpdatePlace @Regression
+  Scenario Outline: Verify if Place is being Succesfully updated using updatePlaceAPI
+    Given UpdatePlace Payload with "<PlaceId>", "<address>" and key "qaclick123"
+    When user calls "updatePlaceAPI" with "PUT" http request
+    Then the API call got success with status code 200
+    And "msg" in response body is "Address successfully updated"
+
+    Examples:
+      | PlaceId                          | address          |
+      | 121aeea5976b39e67e87cd0f015ea515 | Barcelona, Spain |
+
 
   @DeletePlace @Regression
   Scenario: Verify if Delete Place functionality is working

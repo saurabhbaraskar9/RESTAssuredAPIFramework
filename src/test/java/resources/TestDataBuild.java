@@ -5,14 +5,16 @@ import java.util.List;
 
 import pojo.AddPlace;
 import pojo.Location;
+import pojo.UpdatePlace;
 
 public class TestDataBuild {
 
-	
-	
+	AddPlace p =new AddPlace();
+	UpdatePlace u = new UpdatePlace();
+
 	public AddPlace addPlacePayLoad(String name, String language, String address)
 	{
-		AddPlace p =new AddPlace();
+
 		p.setAccuracy(50);
 		p.setAddress(address);
 		p.setLanguage(language);
@@ -36,8 +38,11 @@ public class TestDataBuild {
 		return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";
 	}
 
-	public String getPlacePayload(String placeId)
+	public UpdatePlace updatePlacePayload(String placeId, String address, String key)
 	{
-		return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";
-	}
+		u.setPlace_id(placeId);
+		u.setAddress(address);
+		u.setKey(key);
+		return u;
+    }
 }

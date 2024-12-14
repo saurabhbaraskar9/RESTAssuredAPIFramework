@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
         features = "src/test/java/features",
         plugin = {"json:target/jsonReports/cucumber-report.json"},
         glue = {"stepDefinations"},
-        tags = "@DeleteSpecificPlace"
+        tags = "@Regression"
 )
 public class TestRunner {
     // No additional fields or methods are required for this runner class
