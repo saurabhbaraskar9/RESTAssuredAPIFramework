@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +27,7 @@ import pojo.Location;
 import resources.APIResources;
 import resources.TestDataBuild;
 import resources.Utils;
+import utility.ExtentReportUtil;
 
 public class StepDefination extends Utils {
     RequestSpecification res;
@@ -38,6 +40,9 @@ public class StepDefination extends Utils {
 
     @Given("Add Place Payload with {string}  {string} {string}")
     public void add_Place_Payload_with(String name, String language, String address) throws IOException {
+
+        ExtentReportUtil.getTest().log(Status.PASS, "API test started successfully");
+
 
         res = given().spec(requestSpecification()).log().all()
                 .body(data.addPlacePayLoad(name, language, address));
@@ -71,7 +76,7 @@ public class StepDefination extends Utils {
     public void in_response_body_is(String keyValue, String Expectedvalue) {
         log.info("Status is-  " + response.getStatusLine());
         log.info("Response is   " + response.asString());
-		assertEquals(getJsonPath(response, keyValue), Expectedvalue);
+        assertEquals(getJsonPath(response, keyValue), Expectedvalue);
     }
 
     @Then("verify place_Id created maps to {string} using {string}")
@@ -82,6 +87,7 @@ public class StepDefination extends Utils {
         user_calls_with_http_request(resource, "GET");
         String actualName = getJsonPath(response, "name");
         assertEquals(actualName, expectedName);
+        ExtentReportUtil.getTest().log(Status.PASS, "API response checked successfully");
 
 
     }
@@ -90,32 +96,41 @@ public class StepDefination extends Utils {
     @Given("DeletePlace Payload")
     public void deleteplace_Payload() throws IOException {
         log.info("Place with place ID to be deleted-  " + place_id);
+        ExtentReportUtil.getTest().log(Status.PASS, "Deleting place...");
         res = given().spec(requestSpecification()).body(data.deletePlacePayload(place_id));
         log.info(res.toString());
+        ExtentReportUtil.getTest().log(Status.PASS, "Place deleted successfully");
+
     }
 
 
     @Given("GetPlace Payload with {string}")
     public void getplacePayloadWith(String place_ID) throws IOException {
+        ExtentReportUtil.getTest().log(Status.PASS, " Getting place...");
         log.info("Place with place ID to be fetched-  " + place_ID);
         res = given().spec(requestSpecification()).queryParam("key", "qaclick123")
                 .queryParam("place_id", place_ID);
+        ExtentReportUtil.getTest().log(Status.PASS, "Place fetched successfully");
     }
 
     @Given("DeletePlace Payload with {string}")
     public void deleteplacePayloadWith(String PlaceId) throws IOException {
         log.info("Place with place ID to be deleted-  " + PlaceId);
+        ExtentReportUtil.getTest().log(Status.PASS, "Deleting place...");
         res = given().spec(requestSpecification()).body(data.deletePlacePayload(PlaceId));
         log.info(res.toString());
+        ExtentReportUtil.getTest().log(Status.PASS, "Place deleted successfully");
     }
 
     @Given("UpdatePlace Payload with {string}, {string} and key {string}")
     public void updateplacePayloadWithAndKey(String PlaceId, String address, String key) throws IOException {
         log.info("Place with place ID to be updated-  " + PlaceId);
+        ExtentReportUtil.getTest().log(Status.PASS, "Updating place...");
 
         res = given().spec(requestSpecification())
                 //	.queryParam("key", "qaclick123")
                 .body(data.updatePlacePayload(PlaceId, address, key));
         log.info("This is request body " + res.toString());
+        ExtentReportUtil.getTest().log(Status.PASS, "Place updated successfully");
     }
 }

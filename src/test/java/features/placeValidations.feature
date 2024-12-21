@@ -34,8 +34,8 @@ Feature: Validating Place API's
     And "msg" in response body is "Address successfully updated"
 
     Examples:
-      | PlaceId                          | address          |
-      | 121aeea5976b39e67e87cd0f015ea515 | Barcelona, Spain |
+      | PlaceId                          | address |
+      | ed411b09b70ddb46414e927b879d597e | Berlin City, Germany |
 
 
   @DeletePlace @Regression
@@ -50,7 +50,7 @@ Feature: Validating Place API's
 
   #This will delete a specific place set by user
   @DeleteSpecificPlace
-  Scenario Outline: Verify if Delete Place functionality is working
+  Scenario Outline: Verify if Delete Place functionality for a specific place id is working
 
     Given DeletePlace Payload with "<PlaceId>"
     When user calls "deletePlaceAPI" with "POST" http request
@@ -59,7 +59,7 @@ Feature: Validating Place API's
 
     Examples:
       | PlaceId                          |
-      | b8f29bd390da9e6db0c53bb729eaae63 |
+      | e9246a3a2ae217567460e87f567db41f |
 
 
 	
